@@ -5,10 +5,10 @@ A Vending Machine is a automated seller that customers can buy its items through
  - Vending Machine offers items worth 300 unit
 
 ## Input and outputs
-We assume there are  3 signal corresponding to each type of coins in names of `in100`, `in200` and `in500 ` that will be active (with logical value 1) A single clock when user insert a coin and then becomes deactivated. The output for this module considers only 2 types of coins because there is no way of having a 500 unit coin in changes when the price is fixed to 300 unit. There is another signal named `delivery` that indicates purchase is done and vending machine should deliver the item. We also consider that there is no need to keep delivery signal active for long time but for returning changes there is some slow actuator corresponding for 2 type of coins (100 and 200 unit) that needs at least *K* clock to remain active.
+We assume there are  3 signal corresponding to each type of coins in names of `in100`, `in200` and `in500 ` that will be active (with logical value 1) a single clock when user insert a coin and then becomes deactivated. The output for this module considers only 2 types of coins because there is no way of having a 500 unit coin in change when the price is fixed to 300 unit. There is another signal named `delivery` that indicates purchase is done and vending machine should deliver the item. We also consider that there is no need to keep delivery signal active for long time but for returning changes there is some slow actuator corresponding for 2 type of coins (100 and 200 unit) that needs at least *K* clock to remain active.
 
 ## Design 
-The core of the design is a register named `sum` that holds current values of entered coins. Sum register will be restarted with the signal `done` (equivalent to delivery signal) to be ready for next purchase. At every positive edge of the clock this register can change in two way relating to `mode` signal. Mode signal indicates machine two states of **1.** Accepting coin and **2.** returning changes. In the first mode the value of sum will accumulates with value of the inserted coin and in the second mode it will decrease by value of change.
+The core of the design is a register named `sum` that holds current values of entered coins. Sum register will be restarted with the signal `done` (equivalent to delivery signal) to be ready for next purchase. At every positive edge of the clock this register can change in two way relating to `mode` signal. Mode signal indicates machine two states of **1.** Accepting coin and **2.** returning change. In the first mode the value of sum will accumulates with value of the inserted coin and in the second mode it will decrease by value of change.
 
 ### Control Unit
 Even there is no separated module for control unit in this project but it can be seen in form of specific signals.
@@ -39,4 +39,4 @@ As mentioned before actuator relating to returning changes is very slow so each 
 
 ![enter image description here](https://lh3.googleusercontent.com/MLwbDEZS0Aqqi2DFvcEwhqxJtOD_hwUIhMyIIJOMZTaKflLkiL_bEN8dxov5AR4cxsxUDy2HRdIh "WAIT Module Design")
 
-> This Report Written by Farzin Mohammdi with [StackEdit](https://stackedit.io/).
+> This Report Written by Farzin Mohammdi and Edited by Kimia Ghoreishy with [StackEdit](https://stackedit.io/).
